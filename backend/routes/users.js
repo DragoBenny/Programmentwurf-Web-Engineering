@@ -1,12 +1,17 @@
 const express = require("express");
-const controller = require("../controller/users.js");
 const router = express.Router();
 
+const {
+  loginUser
+} = require("../controller/users");
+
 router.get("/", (req, res) => {
-  if(res.se){
+  if(res.send("bup")){
     return 0;
   }
   res.status(500);
 });
+
+router.get("/login", loginUser);
 
 module.exports = router;

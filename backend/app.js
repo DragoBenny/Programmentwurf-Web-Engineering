@@ -10,8 +10,12 @@ app.listen(port, () => {
 })
 
 app.get("/", (req, res) => {
-  res.send("If you can see this, the server is running!");
+  if(res.send("If you can see this, the server is running!")){
+    return 0;
+  }
+  console.log("error loading");
 });
 
 app.use('/users', users);
 
+//module.exports = app;
