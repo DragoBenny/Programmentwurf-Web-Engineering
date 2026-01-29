@@ -1,13 +1,31 @@
 <!DOCTYPE html>
-    <head>
+<html>
+<head>
+    <title>Login Test</title>
+</head>
+<body>
+    <form id="login-form">
+        <label>Login Test</label><br>
+        <input id="username-field" type="text" placeholder="Username" required/><br>
+        <input id="password-field" type="password" placeholder="Password" required/><br>
+        <input id="submit-button" type="submit" value="Login"/>
+    </form>
 
-    </head>
-    <body>
-        <form>
-            <label>Login Test</label>
-            <input id="name-field" type="text"/>
-            <input id="password field" type="text"/>
-            <input id="submit-button" type="submit" value="Login"/>
-        </form>
-    </body>
+    <script>
+        document.getElementById("login-form").addEventListener("submit", function(e) {
+            e.preventDefault();
+            var object = new Object();
+            object.username = document.getElementById("username-field").value;
+            object.password = document.getElementById("password-field").value;
+            var jsonString = JSON.stringify(object);
+            fetch('http://localhost:3000/backend/users/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: jsonString
+    })
+        });
+    </script>
+</body>
 </html>
