@@ -12,6 +12,8 @@ router.get('/', (req, res) => { //testing purposes
   res.send("bup");
 });
 
+router.get('/bup', loginUser);
+
 router.get('/register', registerView);
 router.get('/login', loginView);
 router.post('/register', registerUser); //register user with username and password

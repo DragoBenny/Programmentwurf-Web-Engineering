@@ -17,7 +17,14 @@ class Model{
         return this.#connection;
     }
 
-    async getAll() {}
+    async getAll() {
+        const connection = await this.connect();
+        const query = 'SELECT * FROM Users';
+        const [data] = await connection.query(query);
+        return data;
+    }
     async getById(id) {}
     async save(user) {}
 }
+
+module.exports = new Model();

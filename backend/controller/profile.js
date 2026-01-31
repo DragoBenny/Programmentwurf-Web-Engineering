@@ -1,3 +1,5 @@
+const model = require('../models/users');
+
 const registerView = (req, res) => {
     res.render('../views/register.pug');
 }
@@ -17,7 +19,7 @@ const registerUser = (req, res) => {
 }
 
 const loginUser = (req, res) => {
-    res.send("controller sagt hi");
+    res.send(model.getAll());
 }
 
 module.exports = {
