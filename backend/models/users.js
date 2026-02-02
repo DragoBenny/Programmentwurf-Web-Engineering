@@ -10,8 +10,9 @@ class Model{
             host: 'localhost',
             user: 'root',
             password: 'mariadb',
-            database: 'hiking'
+            database: 'hiking-db'
         });
+        console.log(this.#connection);
         await this.#connection.connect();
 
         return this.#connection;
@@ -23,7 +24,9 @@ class Model{
         const [data] = await connection.query(query);
         return data;
     }
-    async getById(id) {}
+ 
+    async getByAttribute(attribute, value) {}
+    async isInTable(attribute, value) {}
     async save(user) {}
 }
 

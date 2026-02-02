@@ -1,12 +1,13 @@
-const port = 3000;
-
 const express = require('express');
+const profile = require('./routes/profile.js');
+
 const app = express();
 
+app.use(express.json());
 app.use(express.static('./public'));
 app.set('view engine', 'pug');
 
-const profile = require('./routes/profile.js');
+const port = 3000;
 
 app.listen(port, () => {
   console.log(`App is listening on port ${port}`)

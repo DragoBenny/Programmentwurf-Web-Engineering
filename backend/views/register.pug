@@ -2,7 +2,7 @@ doctype html
 html(lang="en")
     head 
         meta(charset="UTF-8")
-        title Register 
+        title Registers
     body 
         form
             label Register Test
@@ -11,5 +11,5 @@ html(lang="en")
             input(id="password-field" type="text")
             input(id="confirmed-password-field" type="text")
             input(id="register-button" type="submit" value="Register")
-            label(id="message-field")
+            label(id="message-field") #{message}
         script(type="text/javascript" src="/scripts/register.js")
