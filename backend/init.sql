@@ -1,14 +1,10 @@
-CREATE DATABASE `hiking-db`;
-
-USE `hiking-db`;
-
-CREATE TABLE `Users`(
-    `id` int(11) NOT NULL AUTO_INCREMENT,
-    `username` varchar(255) DEFAULT NULL,
-    `email` varchar(255) DEFAULT NULL,
-    `password` varchar(255) DEFAULT NULL,
-    `active` boolean DEFAULT True,
-    PRIMARY KEY (`id`)
+CREATE TABLE IF NOT EXISTS users (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(255) DEFAULT NULL,
+    email VARCHAR(255) DEFAULT NULL,
+    pass VARCHAR(255) DEFAULT NULL,
+    active bool DEFAULT true
 );
 
-INSERT INTO `Users` (`username`,`email`, `password`) VALUES (`Andy84`, `Andy@gmail.com`, `password`);
+   INSERT INTO users (username, email, pass) VALUES 
+('Andy84', 'Andy@gmail.com', 'password');

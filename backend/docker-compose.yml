@@ -1,19 +1,22 @@
 services:
-
   db:
-    image: mariadb
-    restart: always
+    image: postgres:16-alpine
+    container_name: postgres
     environment:
-      MARIADB_ROOT_HOST: localhost
-      MARIADB_ROOT_PASSWORD: mariadb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: hiking-db
     volumes:
-      - mariadb_data:/var/lib/mysql
+      - db:/var/lib/postgresql/data
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
-
-  adminer:
-    image: adminer
-    restart: always
     ports:
-      - 8080:8080
+      - "5432:5432"
+    networks:
+      - db
+    restart: unless-stopped
+networks:
+  db:
+    driver: bridge
+
 volumes:
-  mariadb_data:
+  db:

@@ -9,7 +9,7 @@ const loginView = (req, res) => {
     res.render('../views/login.pug');
 }
 
-const registerUser = (req, res) => {
+const registerUser = async (req, res) => {
     console.log(req.body);
     const {username, email, password, confirmedPassword} = req.body;
 
@@ -17,16 +17,17 @@ const registerUser = (req, res) => {
     if(!username || !email || !password || !confirmedPassword){ 
         return res.render('../views/register.pug', {message: 'Please fill in all the fields'});
     }
-    
+
     //check if email is already in use
-    if(model.isInTable("email", email)){ 
+    if((await model.getByAttribute('email', email)).length > 0){ 
         return res.render('../views/register.pug', {message: 'Email is already exists'});
     } 
 
+    
     //check if username is already in use
-    if(model.isInTable("username", username)){ 
+    if((await model.getByAttribute('username', username)).length > 0){ 
         return res.render('../views/register.pug', {message: 'Username already exists'});
-    }
+    } 
 
     //check if password is valid -> number of symbols, lower and upper case, etc.
     if(!(password.length >= 8)){
@@ -54,8 +55,8 @@ const registerUser = (req, res) => {
     );    
 }
 
-const loginUser = (req, res) => {
-    return res.send(model.connect());
+const loginUser = async (req, res) => {
+    return res.send(await model.getAll());
 
     const {emailUsername, password} = req.body;
     let attribute; //log in with either email or username

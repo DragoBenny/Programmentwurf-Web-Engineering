@@ -3,11 +3,12 @@
     "bcrypt": "^6.0.0",
     "express": "^5.2.1",
     "leaflet": "^1.9.4",
-    "mariadb": "^3.4.5",
+    "pg": "^8.18.0",
+    "postgres": "^3.4.8",
     "pug": "^3.0.3"
   },
   "scripts": {
     "start": "node app.js",
-    "reset": "docker compose down && docker compose up" 
+    "reset": "docker compose down && docker compose up"
   }
 }

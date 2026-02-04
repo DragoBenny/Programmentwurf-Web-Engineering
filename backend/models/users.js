@@ -1,33 +1,37 @@
-const mariadb = require('mariadb');
+const pool = require('../config/database.js');
 
 class Model{
-    #connection = null;
-
-    async connect(){
-        if (this.#connection = null) return this.#connection;
-
-        this.#connection = await mariadb.createConnection({
-            host: 'localhost',
-            user: 'root',
-            password: 'mariadb',
-            database: 'hiking-db'
-        });
-        console.log(this.#connection);
-        await this.#connection.connect();
-
-        return this.#connection;
-    }
 
     async getAll() {
-        const connection = await this.connect();
-        const query = 'SELECT * FROM Users';
-        const [data] = await connection.query(query);
-        return data;
+        try{
+            const result = await pool.query('SELECT * FROM users');
+            return result.rows;
+        }catch(error){
+            console.error('Error fetching users', error);
+        }
     }
  
-    async getByAttribute(attribute, value) {}
-    async isInTable(attribute, value) {}
-    async save(user) {}
-}
+    async getByAttribute(attribute, value) {
+        try{
+            const result = await pool.query(
+                `SELECT * FROM users WHERE "${attribute}" = $1`,
+                [value]
+            );
+            return result.rows;
+        }catch(error){
+            console.error('Error fetching users by attribute', error);
+        }
+    }
 
+    async save(user) {
+        try{
+            const query = await pool.query(
+                'INSERT INTO users (email, username, pass) VALUES ($1, $2, $3)',
+                [user.email, user.username, user.hashedPassword]
+            ); 
+        }catch(error){
+            console.error('Error creating user', error);
+        }
+    }
+}
 module.exports = new Model();
