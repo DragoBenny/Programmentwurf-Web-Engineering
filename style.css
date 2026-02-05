@@ -1,4 +1,29 @@
 
+/* ===== Color Pallete ===== */
+:root {
+  /* Primary Colors */
+  --primary: #4a9546;           
+  --primary-variant: #2a4528;   
+  
+  /* Secondary Colors */
+  --secondary: #ffea06;                
+  --secondary-variant: #ff8b06; 
+  
+  /* Neutral Colors */
+  --background: #ffffff;        
+  --surface: #9e9e9e;           
+  
+  /* Error */
+  --error: #B00020;           
+  
+  /* Text Colors */
+  --on-primary: #FFFFFF;        
+  --on-secondary: #000000;      
+  --on-background: #000000;     
+  --on-surface: #ffffff;        
+  --on-error: #FFFFFF;          
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -8,13 +33,13 @@
 body {
   font-family: Arial, Helvetica, sans-serif, sans-serif;
   line-height: 1.6;
-  background-color: #303c2f;
+  background-color: var(--background);
 }
 
 
 header {
-  background-color: #2D6C1C;
-  color: white;
+  background-color: var(--primary-variant);
+  color:var(--on-primary);
   padding: 1rem;
 }
 
@@ -22,10 +47,12 @@ header {
   max-width: 400px;
   margin: 2rem auto;
   padding: 2rem;
-  border: 1px solid #83EB66;
+  border: 2px solid var(--primary);
   border-radius: 8px;
-  color: white;
+  color: var(--on-surface);
+  background-color: var(--surface);
 }
+
 
 #login input {
   width: 100%;
@@ -36,10 +63,14 @@ header {
 }
 
 #login input[type="submit"] {
-  background-color: #559f25;
-  color: white;
+  background-color: var(--primary);
+  color: var(--on-primary);
   border: none;
   cursor: pointer;
+}
+
+#login input[type="submit"]:hover{
+  background-color: var(--error);
 }
 
 footer {
