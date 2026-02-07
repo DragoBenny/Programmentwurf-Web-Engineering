@@ -10,7 +10,6 @@ const loginView = (req, res) => {
 }
 
 const registerUser = async (req, res) => {
-    console.log(req.body);
     const {username, email, password, confirmedPassword} = req.body;
 
     //check if all fields are filled in
@@ -50,41 +49,42 @@ const registerUser = async (req, res) => {
             model.save({username, email, hashedPassword});
 
             //redirect user to start page
-            return res.render('../views/register.pug', {message: 'User registered'});
+            return res.render('../views/login.pug');
         })
     );    
 }
 
 const loginUser = async (req, res) => {
-    return res.send(await model.getAll());
-
+    console.log(req.body);
     const {emailUsername, password} = req.body;
     let attribute; //log in with either email or username
 
     //check if fields are filled in
     if(!emailUsername || !password){
-        return res.render('../views/register.pug', {message: 'Please fill in the fields'});
+        return res.render('../views/login.pug', {message: 'Please fill in the fields'});
     } 
 
     //check if email or username exists
-    if(model.isInTable("email", emailUsername)) {
+    if((await model.getByAttribute("email", emailUsername)).length > 0) {
         attribute = "email";
     }
-    else if(model.isInTable("username", emailUsername)){
+    else if((await model.getByAttribute("username", emailUsername)).length > 0){
         attribute = "username";
     }
     else{
-        res.render('../views/register.pug', {message: 'Email or Username is wrong'});
+        res.render('../views/login.pug', {message: 'Email or Username incorrect'});
+        return;
     }
 
     //check if password is correct
-    bcrypt.compare(password, model.getByAttribute(attribute, emailUsername).password, (err) => {
+    bcrypt.compare(password, (await model.getByAttribute(attribute, emailUsername))[0].pass, (err) => {
         if(err){
-            res.render('../views/register.pug', {message: 'Password is wrong'});
+            res.render('../views/login.pug', {message: 'Password incorrect'});
         }
-        res.render('../views/register.pug', {message: 'User logged in'});
-
-        //redirect to start page while creating session
+        else {
+            res.render('../views/login.pug', {message: 'User logged in'});
+            //redirect to start page while creating session
+        } 
     })
 }
 

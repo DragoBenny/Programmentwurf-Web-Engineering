@@ -5,6 +5,3 @@ CREATE TABLE IF NOT EXISTS users (
     pass VARCHAR(255) DEFAULT NULL,
     active bool DEFAULT true
 );
-
-   INSERT INTO users (username, email, pass) VALUES 
-('Andy84', 'Andy@gmail.com', 'password');
