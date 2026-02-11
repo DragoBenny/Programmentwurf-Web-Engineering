@@ -1,35 +1,34 @@
-    const passport = require('passport');
+const passport = require('passport');
 const expressSession = require('express-session');
-const LocalStrategy = require('passport-local');
+const LocalStrategy = require('passport-local').Strategy;
+const model = require('./models/users.js'); 
 
-module.exports = function(app){
-    passport.serializeUser((user, done) => done(null, user.username));
-    passport.deserializeUser((id, done) => {
-        const user = {
-            username:'admin'
-        };
-        done(null, user);
-    });
+function initialize(passport){
+    console.log("initizilaiadsijd");
+    const authenticateUser = (emailUsername, password, done) => {
+        console.log("authenticating");
+        const user = await(model.getByAttribute('email', email))[0];
+        if(user != null){
+            done(null, user);
+        }
+        done(null, false);
+    }
 
     passport.use(
-        new LocalStrategy((username, password, done) => {
-            if(username === 'admin' && password === 'test'){
-                done(null, {
-                    username: 'Admin'
-                });
-            }else {
-                done(null, false)
-            }
-        }) 
+        new LocalStrategy(
+            {
+                usernameField: 'emailUsername',
+                passwordField: 'password'
+            },
+            authenticateUser
+        )
     );
 
-    app.use(
-        expressSession({
-            secret: process.env.AUTH_SECRET,
-            resave: false,
-            saveUninitialized: false,
-        })
-    );
-    app.use(passport.initialize());
-    app.use(passport.session());
-}
+    passport.serializeUser((user, done) => done(null, user.id));
+    passport.deserializeUser((id, done) => {
+        const user = model.getByAttribute("id", id);
+        return done(null, user[0]);
+    });
+} 
+
+module.exports = initialize;

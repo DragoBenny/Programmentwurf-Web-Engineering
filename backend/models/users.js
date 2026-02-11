@@ -23,6 +23,18 @@ class Model{
         }
     }
 
+    async getById(id){
+        try{
+            const result = await pool.query(
+                'SELECT * FROM Users WHERE id = $1',
+                [id]
+            );
+            return result.rows;
+        }catch(error){
+            console.error('Error fetching users by id', error);
+        }
+    }
+
     async save(user) {
         try{
             const query = await pool.query(

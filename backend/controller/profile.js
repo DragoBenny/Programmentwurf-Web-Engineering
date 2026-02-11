@@ -1,5 +1,7 @@
 const model = require('../models/users');
 const bcrypt = require('bcrypt'); //required to hash user passwords
+const { request } = require('node:http');
+const passport = require('passport');
 
 const registerView = (req, res) => {
     res.render('../views/register.pug');
@@ -54,16 +56,25 @@ const registerUser = async (req, res) => {
     );    
 }
 
-const loginUser = async (req, res) => {
+const loginUser = async (req, res, next) => {
     console.log(req.body);
-    const {emailUsername, password} = req.body;
-    let attribute; //log in with either email or username
+    const {usernameEmail, password} = await req.body;
 
     //check if fields are filled in
-    if(!emailUsername || !password){
+    if(!usernameEmail || !password){
         return res.render('../views/login.pug', {message: 'Please fill in the fields'});
-    } 
+    }
 
+    
+    
+
+    /*passport.authenticate('local', {
+      successRedirect: '/',
+      failureRedirect: '/profile'
+    })(req, res)
+    */
+    
+    /*
     //check if email or username exists
     if((await model.getByAttribute("email", emailUsername)).length > 0) {
         attribute = "email";
@@ -76,6 +87,8 @@ const loginUser = async (req, res) => {
         return;
     }
 
+    
+
     //check if password is correct
     bcrypt.compare(password, (await model.getByAttribute(attribute, emailUsername))[0].pass, (err) => {
         if(err){
@@ -85,7 +98,7 @@ const loginUser = async (req, res) => {
             res.render('../views/login.pug', {message: 'User logged in'});
             //redirect to start page while creating session
         } 
-    })
+    })*/
 }
 
 module.exports = {
