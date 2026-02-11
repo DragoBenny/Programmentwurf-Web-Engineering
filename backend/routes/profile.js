@@ -1,4 +1,4 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
 const passport = require('passport');
 
@@ -7,13 +7,15 @@ const {
   loginView, 
   registerUser,
   loginUser
-} = require('../controller/profile');
+} = require('../controller/profileController');
 
 router.get('/', (req, res) => { //testing purposes
-  res.send("bup");
+  if(req.isAuthenticated()){
+    res.send('Welcome to your profile!')
+  }else{
+    res.redirect('/profile/login');
+  }
 });
-
-router.get('/bup', loginUser);
 
 router.get('/register', registerView);
 router.get('/login', loginView);

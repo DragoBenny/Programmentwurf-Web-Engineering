@@ -1,6 +1,5 @@
 const model = require('../models/users');
 const bcrypt = require('bcrypt'); //required to hash user passwords
-const { request } = require('node:http');
 const passport = require('passport');
 
 const registerView = (req, res) => {
@@ -58,47 +57,30 @@ const registerUser = async (req, res) => {
 
 const loginUser = async (req, res, next) => {
     console.log(req.body);
-    const {usernameEmail, password} = await req.body;
+    const {emailUsername, password} = await req.body;
 
     //check if fields are filled in
-    if(!usernameEmail || !password){
+    if(!emailUsername || !password){
         return res.render('../views/login.pug', {message: 'Please fill in the fields'});
     }
 
+    passport.authenticate('local', (err, user, info) => {
     
-    
-
-    /*passport.authenticate('local', {
-      successRedirect: '/',
-      failureRedirect: '/profile'
-    })(req, res)
-    */
-    
-    /*
-    //check if email or username exists
-    if((await model.getByAttribute("email", emailUsername)).length > 0) {
-        attribute = "email";
-    }
-    else if((await model.getByAttribute("username", emailUsername)).length > 0){
-        attribute = "username";
-    }
-    else{
-        res.render('../views/login.pug', {message: 'Email or Username incorrect'});
-        return;
-    }
-
-    
-
-    //check if password is correct
-    bcrypt.compare(password, (await model.getByAttribute(attribute, emailUsername))[0].pass, (err) => {
-        if(err){
-            res.render('../views/login.pug', {message: 'Password incorrect'});
+        if (err) {
+            return res.render('../views/login.pug', {message: '505 Internal Server Error'});
         }
-        else {
-            res.render('../views/login.pug', {message: 'User logged in'});
-            //redirect to start page while creating session
-        } 
-    })*/
+
+        if (!user) {
+            return res.render('../views/login.pug', {message: info.message});
+        }
+
+        req.logIn(user, (err) => {
+            if (err) {
+                return res.status(500).json({ error: 'Could not log in user' });
+            }
+            return res.redirect('/');
+        });
+    })(req, res, next); // <--- IMPORTANT: This executes the middleware
 }
 
 module.exports = {
