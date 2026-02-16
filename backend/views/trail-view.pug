@@ -1,0 +1,15 @@
+extends ./header
+include ./comment-item
+
+
+main
+    section(id="map") #{trail.map}
+    section(id="images")
+        - for(let image in images)
+            img(src=image.src)
+    article(id="description") #{trail.description}
+    section(id="comments")
+        - for(let comment in comments)
+            +commentItem(comment)
+
+include ./footer

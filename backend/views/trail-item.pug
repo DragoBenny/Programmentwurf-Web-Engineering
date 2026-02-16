@@ -1,0 +1,5 @@
+mixin trailItem(trail)
+    tr
+        td 
+            a(href=`/trails/view:${trail.id}`) #{trail.name}
+        td #{trail.description}

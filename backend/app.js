@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const profile = require('./routes/profile.js');
 const bcrypt = require('bcrypt');
 const passport = require('passport');
@@ -32,12 +33,7 @@ app.listen(port, () => {
   console.log(`App is listening on port ${port}`)
 })
 
-app.get('/', (req, res) => {
-  if(res.send('If you can see this, the server is running!')){
-    return 0;
-  }
-  console.log('error loading');
-});
+app.get('/', (req, res) => {res.sendFile(path.join(__dirname, 'index.html'))});
 
 app.use('/profile', profile);
 

@@ -1,4 +1,4 @@
-const model = require('../models/users');
+const model = require('../models/usersModel');
 const bcrypt = require('bcrypt'); //required to hash user passwords
 const passport = require('passport');
 

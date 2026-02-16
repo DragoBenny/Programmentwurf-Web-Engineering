@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+
+    <title>Wanderrouten</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="viewport-devive-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="..." -->
+    <!-- <script src="..."></script> -->
+
+</head>
+
+<body>
+    
+    <div id="homeScreen">   <!-- In diesem Div kommen alle Elemente, die man beim Einladen der Seite sehen sollte -->
+        
+        <header>
+            <img src="..." id="userProfilePicture"> <!-- Bild Placeholder für das Profilbild -->
+            <div id="nameProfile">
+                
+            </div>
+        </header>
+        
+        <div id="login">
+
+            <h1>WILLKOMMEN</h1>
+
+            <form>
+                <input type="text" id="loginUsername" name="loginUsername" value="USERNAME"> <!-- Value will sich hier nicht zeigen -->
+                <input type="password" id="loginPassword" name="loginPassword" value="PASSWORD">
+                <input type="submit" value="ANMELDEN">
+            </form>
+
+            <div id="redirect_registrieren">
+                ODER NEU <a href="...">REGISTREREN</a>
+            </div>
+
+        </div>
+
+        <div id="scrollToRoutes">
+
+            Routen ansehen
+            <img id="scrollArrow">
+
+        </div>
+    
+    </div>
+
+    <div id="routesScreen">   <!-- In diesem Div kommen alle Elememente, die für die Routenauswahl sind -->
+
+        <div id="routeCards"> <!-- Hier werden die Verschiedenen Routen und ihre Information gezeigt. Sollten als Buttons funktionieren -->
+
+            <button id="buttonRoute1" class="buttonRoute">Route1</button>
+            <button id="buttonRoute2" class="buttonRoute">Route2</button>
+            <button id="buttonRoute3" class="buttonRoute">Route3</button>
+            <button id="buttonRoute4" class="buttonRoute">Route4</button>
+            
+        </div>
+
+        <div id="routeMaps">    <!-- Hier wird die Karte mit den Routen gezeigt -->
+            
+            <img src="..." id="map">
+
+            <img src="..." id="startPin">
+            <!-- Hier Element für die Straße an sich -->
+            <img src="..." id="endPin">
+
+        </div>
+
+    </div>
+
+    <footer>
+        Footer
+    </footer>
+    
+</body>
+
+</html>
