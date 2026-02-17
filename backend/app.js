@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const profile = require('./routes/profile.js');
+const trails = require('./routes/trails.js');
 const bcrypt = require('bcrypt');
 const passport = require('passport');
 const expressSession = require('express-session');
@@ -36,5 +37,6 @@ app.listen(port, () => {
 app.get('/', (req, res) => {res.sendFile(path.join(__dirname, 'index.html'))});
 
 app.use('/profile', profile);
+app.use('/trails', trails);
 
 module.exports = app;

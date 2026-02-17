@@ -55,6 +55,15 @@ const registerUser = async (req, res) => {
     );    
 }
 
+const logoutUser = async(req, res, next) => {
+    req.logout((err) => {
+    if(err){
+      return next(err);
+    }
+    res.redirect('/');
+  });
+}
+
 const loginUser = async (req, res, next) => {
     console.log(req.body);
     const {emailUsername, password} = await req.body;
@@ -86,6 +95,7 @@ const loginUser = async (req, res, next) => {
 module.exports = {
     registerView,
     loginView,
+    logoutUser,
     registerUser,
     loginUser
 };

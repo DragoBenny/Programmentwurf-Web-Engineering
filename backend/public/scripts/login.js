@@ -1,6 +1,5 @@
 document.getElementById("login-button").addEventListener("click", async function(e) {
     e.preventDefault();
-    console.log("send request");
     const data = {
         emailUsername: document.getElementById("username-field").value,
         password: document.getElementById("password-field").value,
@@ -15,5 +14,7 @@ document.getElementById("login-button").addEventListener("click", async function
         document.open();
         document.write(html);
         document.close();
+    }else{
+        console.log("Error while fetching!");
     }
 });

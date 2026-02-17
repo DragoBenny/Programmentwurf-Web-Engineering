@@ -1,6 +1,5 @@
 document.getElementById("register-button").addEventListener("click", async function(e) {
     e.preventDefault();
-    console.log("send request");
     const data = {
         username: document.getElementById("username-field").value,
         email: document.getElementById("email-field").value,
@@ -17,5 +16,7 @@ document.getElementById("register-button").addEventListener("click", async funct
         document.open();
         document.write(html);
         document.close();
+    }else{
+        console.log("Error while fetching!");
     }
 });

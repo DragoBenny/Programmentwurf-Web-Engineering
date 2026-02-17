@@ -4,7 +4,8 @@ const passport = require('passport');
 
 const {
   registerView,
-  loginView, 
+  loginView,
+  logoutUser, 
   registerUser,
   loginUser
 } = require('../controller/profileController');
@@ -19,16 +20,8 @@ router.get('/', (req, res) => { //testing purposes
 
 router.get('/register', registerView);
 router.get('/login', loginView);
+router.get('/logout', logoutUser); //end the session of the user
 router.post('/register', registerUser); //register user with username and password
 router.post('/login', loginUser); //login with username, email, password and confirmed password
-
-router.get('/logout', (req, res, next) => {
-  req.logout((err) => {
-    if(err){
-      return next(err);
-    }
-    res.redirect('/');
-  });
-});
 
 module.exports = router;

@@ -11,7 +11,8 @@ const trailListView = async (req, res) => {
 }
 
 const trailView = async (req, res) => {
-    const trailId = req.params.trailId;
+    const trailId = parseInt(req.params.trailId);
+    console.log("Parameter: ", trailId);
     //load trail element into template
     const trail = (await trailsModel.getById(trailId))[0];
     const images = await imagesModel.getByTrailId(trailId);

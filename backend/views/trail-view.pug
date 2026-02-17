@@ -1,15 +1,29 @@
-extends ./header
+extends ./frame
 include ./comment-item
+include ./map-script
 
 
-main
-    section(id="map") #{trail.map}
+block content
+    div(id='map')
     section(id="images")
         - for(let image in images)
-            img(src=image.src)
-    article(id="description") #{trail.description}
-    section(id="comments")
-        - for(let comment in comments)
-            +commentItem(comment)
+            img(src=image.source)
+    article(id="description") Beschreibung: #{trail.description}
+    section(id='comment-section')
+        h3 Kommentare:
+        form 
+            input(type="text")
+            input(type="button")
+        div(id="comments")
+            - for(let comment in comments)
+                +commentItem(comment)
 
-include ./footer
+block scripts
+    script(type="importmap").
+        {
+            "imports": {
+                "leaflet": "https://unpkg.com/leaflet@2.0.0-alpha.1/dist/leaflet.js",
+                "leaflet-gpx": "/scripts/gpx.js"
+            }
+        }
+    +mapScript(trail)

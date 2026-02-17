@@ -7,6 +7,6 @@ const {
 } = require('../controller/trailsController');
 
 router.get('/', trailListView);
-router.get('/view:trailId', trailView);
+router.get('/:trailId', trailView);
 
 module.exports = router;

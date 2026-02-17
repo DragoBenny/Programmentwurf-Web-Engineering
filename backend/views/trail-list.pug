@@ -1,0 +1,9 @@
+extends ./frame
+include ./trail-item
+
+block content
+    li(id="trails")
+        each trail in trails
+            +trailItem(trail)
+
+    
