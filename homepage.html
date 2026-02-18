@@ -1,105 +1,116 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WanderWege - Entdecke deine Route</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WanderWege</title>
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <!-- Header -->
-    <header class="header">
-        <div class="logo">WanderWege</div>
-        <nav class="nav">
-            <a href="" class="nav-link">Routen</a>
-        </nav>
-        <div class="account">
-            <span>Account</span>
-            <div class="account-avatar"></div>
-        </div>
-    </header>
+  <!-- Header -->
+  <header class="header">
+    <a href="" class="logo">
+      <img
+        class="logo-img"
+        src="Wander-weg-logo.svg"
+        alt="WanderWege Logo"
+      />
+    </a>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-image">
-            <span class="placeholder-text">Hero Image</span>
-        </div>
-    </section>
+    <nav class="nav">
+      <a href="" class="nav-link">Routen</a>
+    </nav>
 
-    <!-- Beliebte Routen (Slideshow) -->
-    <section class="routes-section">
-        <h2 class="section-title">Beliebte Routen</h2>
-        <div class="routes-slider-container">
-            <div class="routes-slider" id="routesSlider">
-                <article class="route-card">
-                    <div class="route-image">
-                        <span class="placeholder-text">Preview Image</span>
-                    </div>
-                    <h3 class="route-title">Route 1</h3>
-                </article>
-                <article class="route-card">
-                    <div class="route-image">
-                        <span class="placeholder-text">Preview Image</span>
-                    </div>
-                    <h3 class="route-title">Route 2</h3>
-                </article>
-                <article class="route-card">
-                    <div class="route-image">
-                        <span class="placeholder-text">Preview Image</span>
-                    </div>
-                    <h3 class="route-title">Route 3</h3>
-                </article>
-                <article class="route-card">
-                    <div class="route-image">
-                        <span class="placeholder-text">Preview Image</span>
-                    </div>
-                    <h3 class="route-title">Route 4</h3>
-                </article>
-                <article class="route-card">
-                    <div class="route-image">
-                        <span class="placeholder-text">Preview Image</span>
-                    </div>
-                    <h3 class="route-title">Route 5</h3>
-                </article>
-                <article class="route-card">
-                    <div class="route-image">
-                        <span class="placeholder-text">Preview Image</span>
-                    </div>
-                    <h3 class="route-title">Route 6</h3>
-                </article>
-            </div>
-        </div>
-        <div class="slider-controls">
-            <button class="slider-btn" id="prevBtn">←</button>
-            <button class="slider-btn" id="nextBtn">→</button>
-        </div>
-        <div class="slider-dots" id="sliderDots"></div>
-    </section>
+    <div class="account">
+      <span>Account</span>
+      <div class="account-avatar"></div>
+    </div>
+  </header>
 
-    <!-- Rezensionen Section -->
-    <section class="reviews-section">
-        <div class="reviews-container">
-            <div class="reviews-list">
-                <div class="review-card">
-                    <span class="placeholder-text">Rezension 1</span>
-                </div>
-                <div class="review-card">
-                    <span class="placeholder-text">Rezension 2</span>
-                </div>
-                <div class="review-card">
-                    <span class="placeholder-text">Rezension 3</span>
-                </div>
-            </div>
-        </div>
-    </section>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-image">
+      <img src="hero-img-test.jpeg">
+    </div>
+  </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <span>Footer</span>
-        </div>
-    </footer>
+  <!-- Beliebte Routen (Slideshow) -->
+  <section class="routes-section">
+    <h2 class="section-title">Beliebte Routen</h2>
+    <div class="routes-slider-container">
+      <div class="routes-slider" id="routesSlider">
+        <article class="route-card">
+          <div class="route-image">
+            <img class="route-1-image" src="route_1.jpg">
+            <span class="placeholder-text">Preview Image</span>
+          </div>
+          <h3 class="route-title">Route 1</h3>
+        </article>
+        <article class="route-card">
+          <div class="route-image">
+            <span class="placeholder-text">Preview Image</span>
+          </div>
+          <h3 class="route-title">Route 2</h3>
+        </article>
+        <article class="route-card">
+          <div class="route-image">
+            <span class="placeholder-text">Preview Image</span>
+          </div>
+          <h3 class="route-title">Route 3</h3>
+        </article>
+        <article class="route-card">
+          <div class="route-image">
+            <span class="placeholder-text">Preview Image</span>
+          </div>
+          <h3 class="route-title">Route 4</h3>
+        </article>
+        <article class="route-card">
+          <div class="route-image">
+            <span class="placeholder-text">Preview Image</span>
+          </div>
+          <h3 class="route-title">Route 5</h3>
+        </article>
+        <article class="route-card">
+          <div class="route-image">
+            <span class="placeholder-text">Preview Image</span>
+          </div>
+          <h3 class="route-title">Route 6</h3>
+        </article>
+      </div>
+    </div>
 
-    <script src="slider.js"></script>
+    <div class="slider-controls">
+      <button class="slider-btn" id="prevBtn">←</button>
+      <button class="slider-btn" id="nextBtn">→</button>
+    </div>
+    <div class="slider-dots" id="sliderDots"></div>
+  </section>
+
+  <!-- Rezensionen Section -->
+  <section class="reviews-section">
+    <div class="reviews-container">
+      <div class="reviews-list">
+        <div class="review-card">
+          <span class="placeholder-text">Rezension 1</span>
+        </div>
+        <div class="review-card">
+          <span class="placeholder-text">Rezension 2</span>
+        </div>
+        <div class="review-card">
+          <span class="placeholder-text">Rezension 3</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <span>Footer</span>
+    </div>
+  </footer>
+
+  <script src="slider.js"></script>
 </body>
 </html>
