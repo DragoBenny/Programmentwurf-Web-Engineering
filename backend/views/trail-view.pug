@@ -5,21 +5,28 @@ include ./map-script
 
 block content
     div(id='map')
-    section(id="images")
-        - for(let image in images)
-            img(src=image.source)
-    article(id="description") Beschreibung: #{trail.description}
+    section(id='images')
+        each image in images
+            img(src=`/images/scenery/${image.source}`)
+    section(id='info')
+        table
+            tbody
+                tr 
+                    td Schwierigkeit: #{trail.info.difficulty}  
+                    td Strecke: #{trail.info.length}km   
+                    td Dauer: #{trail.info.time}h
+    article(id='description') Beschreibung: #{trail.description}
     section(id='comment-section')
         h3 Kommentare:
         form 
-            input(type="text")
-            input(type="button")
-        div(id="comments")
-            - for(let comment in comments)
+            input(type='text')
+            input(type='button' value='Senden')
+        div(id='comments')
+            each comment in comments
                 +commentItem(comment)
 
 block scripts
-    script(type="importmap").
+    script(type='importmap').
         {
             "imports": {
                 "leaflet": "https://unpkg.com/leaflet@2.0.0-alpha.1/dist/leaflet.js",

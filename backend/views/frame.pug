@@ -1,14 +1,22 @@
 doctype html 
-html(lang="en")
+html(lang="de")
     head 
         meta(charset="UTF-8")
         link(rel='stylesheet' href='https://unpkg.com/leaflet@1.9.4/dist/leaflet.css')
+        link(rel='stylesheet' href='/css/style.css')
         title #{title} 
-        style #{style}
         style.
-            #map { height: 400px; width: 100%; }
+            #map { height: 500px; width: 100%; }
     body 
-        header
+        header(class='header')
+            div(class="logo")
+                a(href="/" class="nav-link") WanderWege
+            nav(class="nav")
+                a(href="/trails" class="nav-link") Routen
+            div(class="account")
+                span
+                    a(href="/profile" class="nav-link") Account
+                div(class="account-avatar")
         main
             block content 
         footer 

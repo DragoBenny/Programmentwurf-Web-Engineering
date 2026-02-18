@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS trails (
     zoom INTEGER DEFAULT NULL,
     gpx VARCHAR(255) DEFAULT NULL,
     info JSON DEFAULT NULL,
-    description VARCHAR(255) DEFAULT NULL
+    description TEXT DEFAULT NULL
 );
 
 CREATE TABLE IF NOT EXISTS images (
@@ -38,9 +38,28 @@ CREATE TABLE IF NOT EXISTS reviews (
     content VARCHAR(255) DEFAULT NULL
 );
 
-INSERT INTO trails (name, coords, zoom, gpx, description) VALUES 
-('Rundgang um den Campus',
-ARRAY[47.66583, 9.44690],
-35,
-'campus.gpx',
-'Kurz Rungang um den Campus');
+INSERT INTO trails (name, coords, zoom, gpx, info, description) VALUES 
+(
+    'Rundgang um den Campus',
+    ARRAY[47.66583, 9.44690],
+    35,
+    'campus.gpx',
+    '{
+        "difficulty":"Einfach",
+        "length": 1.09,
+        "time" : 0.1
+    }',
+    'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.'
+);
+
+INSERT INTO images (trail_id, source) VALUES 
+(
+    1,
+    'cat1.jpg'
+);
+
+INSERT INTO images (trail_id, source) VALUES 
+(
+    1,
+    'cat2.jpg'
+);
