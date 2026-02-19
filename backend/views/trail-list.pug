@@ -1,0 +1,10 @@
+extends ./frame
+include ./trail-item
+
+block content
+    table(id='trails')
+        tbody
+            each trail in trails
+                +trailItem(trail, images)
+
+    

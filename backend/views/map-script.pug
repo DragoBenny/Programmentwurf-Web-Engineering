@@ -1,0 +1,26 @@
+mixin mapScript(trail)
+    script(type="module").
+        import { Map, TileLayer } from 'leaflet';
+        import { GPX } from 'leaflet-gpx';
+
+        const trailObject = !{JSON.stringify(trail)};
+        //create map element
+        const map = new Map ('map').setView(trailObject.coords, trailObject.zoom);
+
+        //create layer for map
+        new TileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '© OpenStreetMap'
+        }).addTo(map);
+        
+        //load the gpx file 
+        const url = `/gpx/${trailObject.gpx}`;
+        const options = {
+            async: true,
+            polyline_options: { color: 'orange' },
+        };
+
+        //add gpx to map
+        new GPX(url, options).on('loaded', (e) => {
+            map.fitBounds(e.target.getBounds());
+        }).addTo(map);

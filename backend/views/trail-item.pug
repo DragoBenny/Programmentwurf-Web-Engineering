@@ -1,0 +1,15 @@
+mixin trailItem(trail, images)
+    tr
+        td 
+            div(id='image-container')
+                - var stopFlag = false
+
+                each image in images
+                    if image.trail_id === trail.id && !stopFlag
+                        img(src=`/images/scenery/${image.source}`)
+                        - stopFlag = true
+  
+            
+        td 
+            a(href=`/trails/${trail.id}`) #{trail.name}
+            p #{trail.description}
