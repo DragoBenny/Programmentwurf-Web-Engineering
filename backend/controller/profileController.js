@@ -2,6 +2,16 @@ const model = require('../models/usersModel');
 const bcrypt = require('bcrypt'); //required to hash user passwords
 const passport = require('passport');
 
+
+const getStatus = async (req, res) => {
+    if(req.isAuthenticated()){
+        const username = (await model.getByAttribute('id', req.user.id))[0].username;
+        res.send({loggedIn: true, username: username});
+    }else{
+        res.send({loggedIn: false, username: 'Account'});
+    }
+}
+
 const registerView = (req, res) => {
     res.render('../views/register.pug');
 }
@@ -89,10 +99,11 @@ const loginUser = async (req, res, next) => {
             }
             return res.redirect('/');
         });
-    })(req, res, next); // <--- IMPORTANT: This executes the middleware
+    })(req, res, next); 
 }
 
 module.exports = {
+    getStatus,
     registerView,
     loginView,
     logoutUser,

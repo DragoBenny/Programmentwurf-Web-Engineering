@@ -1,3 +1,4 @@
+const usersModel = require('../models/usersModel');
 const trailsModel = require('../models/trailsModel');
 const imagesModel = require('../models/imagesModel');
 const commentsModel = require('../models/commentsModel');
@@ -8,7 +9,6 @@ const trailListView = async (req, res) => {
     const images = await imagesModel.getAll();
 
     res.render('../views/trail-list', {trails: trails, images: images});
-    
 }
 
 const trailView = async (req, res) => {
@@ -22,11 +22,15 @@ const trailView = async (req, res) => {
 }
 
 const createComment = async(req, res) => {
+    const content = req.body;
+    const username = (await usersModel.getByAttribute('id', req.user.id))[0].username;
 
+    commentsModel.save({username, content});
 }
 
 
 module.exports = {
     trailListView, 
-    trailView
+    trailView,
+    createComment
 };

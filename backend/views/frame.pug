@@ -8,16 +8,20 @@ html(lang="de")
         style.
             #map { height: 500px; width: 100%; }
     body 
-        header(class='header')
-            div(class="logo")
-                a(href="/" class="nav-link") WanderWege
-            nav(class="nav")
-                a(href="/trails" class="nav-link") Routen
-            div(class="account")
+        header.header
+            a.logo(href="/")
+                img.logo-img(
+                    src="/images/Wander-weg-logo.svg"
+                    alt="WanderWege Logo"
+                )
+            nav.nav
+                a.nav-link(href="/trails") Routen
+            .account
                 span
-                    a(href="/profile" class="nav-link") Account
-                div(class="account-avatar")
+                    a(id="status" href="/profile") Account
+                .account-avatar
         main
             block content 
         footer 
+        script(src='/scripts/handleSession.js')
         block scripts

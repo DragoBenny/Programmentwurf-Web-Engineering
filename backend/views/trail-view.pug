@@ -18,14 +18,15 @@ block content
     article(id='description') Beschreibung: #{trail.description}
     section(id='comment-section')
         h3 Kommentare:
-        form 
-            input(type='text')
-            input(type='button' value='Senden')
+        form(id="comment-form") 
+            input(id='comment-content' type='text' required)
+            input(id='comment-button' type='submit' value='Senden')
         div(id='comments')
             each comment in comments
                 +commentItem(comment)
 
 block scripts
+    script(src='/scripts/sendComment.js')
     script(type='importmap').
         {
             "imports": {
