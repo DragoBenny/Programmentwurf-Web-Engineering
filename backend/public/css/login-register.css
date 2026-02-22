@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* === Exaktes Farbschema (nur die vorgegebenen Farben) === */
+  
+  /* Weiß */
+  --white: hsl(0, 0%, 92%);
+  
+  /* Grüntöne */
+  --green1: hsl(151, 64%, 89%);
+  --green2: hsl(161, 75%, 71%);
+  --green3: hsl(170, 84%, 39%);
+  --green4: hsl(180, 82%, 16%);
+  
+  /* Blautöne */
+  --blue1: hsl(198, 55%, 85%);
+  --blue2: hsl(212, 72%, 64%);
+  --blue3: hsl(225, 88%, 49%);
+  --blue4: hsl(232, 87%, 27%);
+  
+  /* Orangetöne */
+  --orange1: hsl(15, 100%, 50%);
+  --orange2: hsl(18, 79%, 88%);
+
+  /* === Layout === */
+  --border-radius: 12px;
+  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body {
+    background-color: var(--white);
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--green4);
+    line-height: 1.6;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+form {
+    border: solid;
+    display: flex;
+    flex-direction: column;
+    padding: 5rem;
+    border-radius: var(--border-radius);
+    background-color: var(--green2);
+    border-color: var(--green3);
+}
+
+.form-element {
+    margin: 0.5rem; 
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    border: solid;
+}
+
+#label-login, #label-register {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+#username-field, #password-field {
+    border-color: var(--green3)
+}
+
+#register-button, #login-button {
+    background-color: var(--green4);
+    color: var(--white);
+    border-color: var(--green4);
+    border-radius: var(--border-radius);
+    border-width: 0.25rem;
+    transition: 0.25s ease;
+}
+
+#register-button:hover, #login-button:hover {
+    transition: 0.25s ease;
+    border-color: var(--orange1)
+}
+
+#register-button:active, #login-button:active {
+    background-color: var(--orange1);
+}
+
+#message-field {
+    border: none;
+}
