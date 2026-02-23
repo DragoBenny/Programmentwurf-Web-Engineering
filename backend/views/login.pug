@@ -2,12 +2,15 @@ doctype html
 html(lang="en")
     head 
         meta(charset="UTF-8")
+        link(rel='stylesheet' href='/css/login-register.css')
         title Login 
-    body 
+    body
+    
         form
-            label Login Test
-            input(id="username-field" type="text")
-            input(id="password-field" type="text")
-            input(id="login-button" type="button" value="Login")
-            label(id="message-field") #{message}
+            label(id="label-login") Login Test
+            input(id="username-field" class="form-element" type="text")
+            input(id="password-field" class="form-element" type="password")
+            input(id="login-button" class="form-element" type="button" value="Login")
+            label(id="message-field" class="form-element") #{message}
+
         script(type="text/javascript" src="/scripts/login.js")

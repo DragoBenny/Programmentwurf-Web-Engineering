@@ -2,14 +2,15 @@ doctype html
 html(lang="en")
     head 
         meta(charset="UTF-8")
+        link(rel='stylesheet' href='/css/login-register.css')
         title Registers
     body 
         form
-            label Register Test
-            input(id="email-field" type="text")
-            input(id="username-field" type="text")
-            input(id="password-field" type="text")
-            input(id="confirmed-password-field" type="text")
-            input(id="register-button" type="submit" value="Register")
-            label(id="message-field") #{message}
+            label(id="label-register") Register Test
+            input(id="email-field" class="form-element" type="text")
+            input(id="username-field" class="form-element" type="text")
+            input(id="password-field" class="form-element" type="text")
+            input(id="confirmed-password-field" class="form-element" type="text")
+            input(id="register-button" class="form-element" type="submit" value="Register")
+            label(id="message-field" class="form-element" ) #{message}
         script(type="text/javascript" src="/scripts/register.js")
