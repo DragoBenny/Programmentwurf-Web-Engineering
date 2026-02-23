@@ -37,49 +37,19 @@
     </div>
   </section>
 
+  <section class="info">
+    <h2>WanderWeg - Deine nächste Tour beginnt hier</h2>
+    <p>Mit WanderWeg entdeckst du die schönsten Wanderrouten auf einen Blick – übersichtlich, inspirierend und interaktiv.
+       Egal ob gemütlicher Spaziergang, aussichtsreiche Panoramastrecke oder anspruchsvolle Bergtour:
+        Auf WanderWeg findest du garantiert die passende Route für dein nächstes Abenteuer.
+    </p>
+  </section>
+
   <!-- Beliebte Routen (Slideshow) -->
   <section class="routes-section">
     <h2 class="section-title">Beliebte Routen</h2>
     <div class="routes-slider-container">
-      <div class="routes-slider" id="routesSlider">
-        <article class="route-card">
-          <div class="route-image">
-            <img class="route-1-image" src="/images/route_1.jpg">
-            <span class="placeholder-text">Preview Image</span>
-          </div>
-          <h3 class="route-title">Route 1</h3>
-        </article>
-        <article class="route-card">
-          <div class="route-image">
-            <span class="placeholder-text">Preview Image</span>
-          </div>
-          <h3 class="route-title">Route 2</h3>
-        </article>
-        <article class="route-card">
-          <div class="route-image">
-            <span class="placeholder-text">Preview Image</span>
-          </div>
-          <h3 class="route-title">Route 3</h3>
-        </article>
-        <article class="route-card">
-          <div class="route-image">
-            <span class="placeholder-text">Preview Image</span>
-          </div>
-          <h3 class="route-title">Route 4</h3>
-        </article>
-        <article class="route-card">
-          <div class="route-image">
-            <span class="placeholder-text">Preview Image</span>
-          </div>
-          <h3 class="route-title">Route 5</h3>
-        </article>
-        <article class="route-card">
-          <div class="route-image">
-            <span class="placeholder-text">Preview Image</span>
-          </div>
-          <h3 class="route-title">Route 6</h3>
-        </article>
-      </div>
+      <div class="routes-slider" id="routesSlider"> </div>                                                                                                                                               
     </div>
 
     <div class="slider-controls">
@@ -92,17 +62,7 @@
   <!-- Rezensionen Section -->
   <section class="reviews-section">
     <div class="reviews-container">
-      <div class="reviews-list">
-        <div class="review-card">
-          <span class="placeholder-text">Rezension 1</span>
-        </div>
-        <div class="review-card">
-          <span class="placeholder-text">Rezension 2</span>
-        </div>
-        <div class="review-card">
-          <span class="placeholder-text">Rezension 3</span>
-        </div>
-      </div>
+      <div class="reviews-list"></div>
     </div>
   </section>
 
@@ -113,7 +73,9 @@
     </div>
   </footer>
 
+  <script src="/scripts/createPopularTrails.js"></script>
+  <script src="/scripts/renderReviews.js"></script>
   <script src="slider.js"></script>
-  <script src="./scripts/handleSession.js"></script>
+  <script src="/scripts/handleSession.js"></script>
 </body>
 </html>

@@ -8,7 +8,7 @@ const getStatus = async (req, res) => {
         const username = (await model.getByAttribute('id', req.user.id))[0].username;
         res.send({loggedIn: true, username: username});
     }else{
-        res.send({loggedIn: false, username: 'Account'});
+        res.send({loggedIn: false, username: 'Anmelden'});
     }
 }
 
