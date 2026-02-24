@@ -28,7 +28,10 @@
 }
 
 body {
-    background-color: var(--white);
+    background-image: url("/images/login-register-background.jpg");
+    background-repeat: no-repeat;
+    background-size: auto 200vh;
+    background-position: center;
     font-family: Arial, Helvetica, sans-serif;
     color: var(--green4);
     line-height: 1.6;
@@ -41,13 +44,14 @@ body {
 }
 
 form {
-    border: solid;
+    border: none;
     display: flex;
     flex-direction: column;
     padding: 5rem;
     border-radius: var(--border-radius);
-    background-color: var(--green2);
-    border-color: var(--green3);
+    background-color: var(--white);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    width: 14rem;
 }
 
 p{
@@ -77,6 +81,7 @@ p{
     border-radius: var(--border-radius);
     border-width: 0.25rem;
     transition: 0.25s ease;
+    font-size: 1rem;
 }
 
 #register-button:hover, #login-button:hover {
@@ -91,4 +96,14 @@ p{
 #message-field {
     color: var(--orange1);
     border: none;
+    color: var(--orange1);
+    font-weight: 600;
+}
+
+@media (max-height: 500px) {
+
+    body {
+        background-size: auto 1000px;
+    }
+
 }
