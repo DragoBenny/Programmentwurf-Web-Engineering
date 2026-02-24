@@ -6,11 +6,12 @@ html(lang="en")
         title Registers
     body 
         form
-            label(id="label-register") Register Test
-            input(id="email-field" class="form-element" type="text")
-            input(id="username-field" class="form-element" type="text")
-            input(id="password-field" class="form-element" type="text")
-            input(id="confirmed-password-field" class="form-element" type="text")
-            input(id="register-button" class="form-element" type="submit" value="Register")
+            label(id="label-register") Registrieren
+            input(id="email-field" class="form-element" type="text" placeholder="E-Mail")
+            input(id="username-field" class="form-element" type="text" placeholder="Username")
+            input(id="password-field" class="form-element" type="text" placeholder="Passwort")
+            input(id="confirmed-password-field" class="form-element" type="text" placeholder="Passwort bestätigen")
+            input(id="register-button" class="form-element" type="submit" value="Registrieren")
+            <a href="/profile/login">oder hier anmelden</a>
             label(id="message-field" class="form-element" ) #{message}
         script(type="text/javascript" src="/scripts/register.js")

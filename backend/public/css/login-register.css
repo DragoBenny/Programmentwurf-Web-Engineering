@@ -50,6 +50,10 @@ form {
     border-color: var(--green3);
 }
 
+p{
+    size: 300px;
+}
+
 .form-element {
     margin: 0.5rem; 
     padding: 1rem;
@@ -62,7 +66,7 @@ form {
     font-weight: 700;
 }
 
-#username-field, #password-field {
+#username-field, #password-field, #email-field, #confirmed-password-field {
     border-color: var(--green3)
 }
 
@@ -85,5 +89,6 @@ form {
 }
 
 #message-field {
+    color: var(--orange1);
     border: none;
 }

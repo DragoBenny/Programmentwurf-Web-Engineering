@@ -129,6 +129,10 @@ font-family: Arial, Helvetica, sans-serif;  background-color: var(--white);
   align-items: center;
 }
 
+.info-section{
+  margin: 2em 10% 2em;
+}
+
 
 /* === Routes Section === */
 .routes-section {
