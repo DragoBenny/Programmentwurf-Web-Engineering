@@ -10,5 +10,7 @@ RUN npm install
 # 4. Den restlichen Code kopieren
 COPY . .
 
+EXPOSE 3000
+
 # 6. Server starten
 CMD ["npm", "start"]

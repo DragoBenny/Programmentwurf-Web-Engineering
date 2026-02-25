@@ -11,18 +11,22 @@ services:
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     ports:
       - "5432:5432"
-    network_mode: host
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
+    networks:
+      - hiking-network
     restart: unless-stopped
   app:
-    build: .
+    build: . 
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_URL: postgres://postgres:postgres@db:5432/hiking-db
     depends_on:
       - db
-    environment:
-      DATABASE_URL: postgresql://user:password@db:5432/dbname
+    networks:
+      - hiking-network
+
 networks:
-  db:
+  hiking-network:
     driver: bridge
 
 volumes:
