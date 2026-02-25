@@ -82,7 +82,8 @@ form {
 
 #register-button:hover, #login-button:hover {
     transition: 0.25s ease;
-    border-color: var(--orange1)
+    border-color: var(--orange1);
+    transform: translateY(-3px);
 }
 
 #register-button:active, #login-button:active {
