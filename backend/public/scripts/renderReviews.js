@@ -1,7 +1,7 @@
 const renderReviews = async () => {
     const reviewList = document.getElementById('reviews-list')
 
-    const response = await fetch('http://localhost:3000/home/reviews');
+    const response = await fetch('/home/reviews');
     if(response.ok){
         data = await response.json();
         const reviews = data.reviews;

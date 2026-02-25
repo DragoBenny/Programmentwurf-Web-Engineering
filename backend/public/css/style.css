@@ -35,17 +35,20 @@
   box-sizing: border-box;
 }
 
+html{
+  min-height: 100%;
+  height: 100%;
+}
+
 body {
-font-family: Arial, Helvetica, sans-serif;  background-color: var(--gray);
+  font-family: Arial, Helvetica, sans-serif;  
+  background-color: var(--gray);
   color: var(--green4);
   line-height: 1.6;
   font-weight: 400;
+  min-height: 100%;
+  height: 100%;
   -webkit-font-smoothing: antialiased;
-}
-
-#map { 
-  height: 500px; 
-  width: 100%; 
 }
 
 /* === Header === */
@@ -120,6 +123,7 @@ font-family: Arial, Helvetica, sans-serif;  background-color: var(--gray);
 }
 
 main{
+  height: auto;
   margin: 0% 10% 0%;
   background-color: var(--white);
 }
@@ -131,7 +135,7 @@ main{
   background-color: var(--white);
 }
 
-.hero-image {
+.hero-image-container {
   width: auto;
   height: auto;
   background: var(--white);
@@ -140,13 +144,28 @@ main{
   align-items: center;
 }
 
-.info-section{
-  margin: 2em 10% 2em;
+#hero-image {
+  width: 80%;
 }
 
+.info-section{
+  margin: 2em 10% 2em;
+  padding: 1em 0 1em;
+  border-top: 5px solid var(--gray);
+  border-bottom: 5px solid var(--gray);
+}
+
+.info-section h2{
+  font-size: 2em;
+}
+
+.info-section p{
+  font-size: 1em;
+}
 
 /* === Routes Section === */
 .routes-section {
+
   padding: 4rem 3rem;
   background-color: var(--white);
 }
@@ -324,8 +343,7 @@ main{
 }
 
 /* === Footer === */
-.footer {
-  margin-top: 3rem;
+.footer{
   padding: 2.5rem 3rem;
   background-color: var(--green4);
   color: var(--white);

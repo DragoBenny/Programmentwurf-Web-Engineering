@@ -6,7 +6,7 @@ document.getElementById("register-button").addEventListener("click", async funct
         password: document.getElementById("password-field").value,
         confirmedPassword: document.getElementById("confirmed-password-field").value
     }
-    const response = await fetch('http://localhost:3000/profile/register', {
+    const response = await fetch('/profile/register', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(data)

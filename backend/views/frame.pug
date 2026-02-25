@@ -5,8 +5,9 @@ html(lang="de")
         link(rel='stylesheet' href='https://unpkg.com/leaflet@1.9.4/dist/leaflet.css')
         link(rel='stylesheet' href='/css/style.css')
         title #{title} 
-        style.
-            #map { height: 500px; width: 100%; }
+    
+        block head 
+            
     body 
         header.header
             a.logo(href="/")
@@ -21,6 +22,6 @@ html(lang="de")
                     a(id="status" href="/profile") Account
         main
             block content 
-        footer 
+
         script(src='/scripts/handleSession.js')
         block scripts

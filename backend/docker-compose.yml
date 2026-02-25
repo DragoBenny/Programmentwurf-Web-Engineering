@@ -11,9 +11,16 @@ services:
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     ports:
       - "5432:5432"
-    networks:
-      - db
+    network_mode: host
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     restart: unless-stopped
+  app:
+    build: .
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: postgresql://user:password@db:5432/dbname
 networks:
   db:
     driver: bridge
