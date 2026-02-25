@@ -1,0 +1,11 @@
+extends ./frame
+include ./comment-item
+
+block content
+    section(class='profile-section')
+        h1 Hallo, #{user.username}
+        a(href='/profile/logout') Klicken Sie hier, um sich abzumelden
+    div(id='comments')
+        h3 Ihre verfassten Kommentare:
+                each comment in comments
+                    +commentItem(comment)

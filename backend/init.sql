@@ -27,7 +27,8 @@ CREATE TABLE IF NOT EXISTS comments (
     id SERIAL PRIMARY KEY,
     trail_id INTEGER,
         CONSTRAINT fk_trails FOREIGN KEY(trail_id) REFERENCES trails(id),
-    author VARCHAR(255) DEFAULT NULL,
+    user_id INTEGER,
+        CONSTRAINT fk_users FOREIGN KEY(user_id) REFERENCES users(id),
     post_date DATE DEFAULT CURRENT_DATE,
     content VARCHAR(255) DEFAULT NULL
 );

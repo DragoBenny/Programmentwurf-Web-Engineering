@@ -1,11 +1,21 @@
-const model = require('../models/usersModel');
+const usersModel = require('../models/usersModel');
+const commentsModel = require('../models/commentsModel');
 const bcrypt = require('bcrypt'); //required to hash user passwords
 const passport = require('passport');
 
+const profileView = async (req, res) => {
+    if(req.isAuthenticated()){
+        const user = (await usersModel.getByAttribute('id', req.user.id))[0];
+        const comments = await commentsModel.getByUserId(req.user.id);
+        res.render('../views/profile.pug', {user: user, comments: comments});
+    }else{
+        res.redirect('/profile/login');
+    }
+}
 
 const getStatus = async (req, res) => {
     if(req.isAuthenticated()){
-        const username = (await model.getByAttribute('id', req.user.id))[0].username;
+        const username = (await usersModel.getByAttribute('id', req.user.id))[0].username;
         res.send({loggedIn: true, username: username});
     }else{
         res.send({loggedIn: false, username: 'Anmelden'});
@@ -29,13 +39,13 @@ const registerUser = async (req, res) => {
     }
 
     //check if email is already in use
-    if((await model.getByAttribute('email', email)).length > 0){ 
+    if((await usersModel.getByAttribute('email', email)).length > 0){ 
         return res.render('../views/register.pug', {message: 'E-Mail existiert bereits'});
     } 
 
     
     //check if username is already in use
-    if((await model.getByAttribute('username', username)).length > 0){ 
+    if((await usersModel.getByAttribute('username', username)).length > 0){ 
         return res.render('../views/register.pug', {message: 'Username existiert bereits'});
     } 
 
@@ -57,7 +67,7 @@ const registerUser = async (req, res) => {
             let hashedPassword = hash;
             
             //create new user in database
-            model.save({username, email, hashedPassword});
+            usersModel.save({username, email, hashedPassword});
 
             //redirect user to start page
             return res.render('../views/login.pug');
@@ -102,6 +112,7 @@ const loginUser = async (req, res, next) => {
 }
 
 module.exports = {
+    profileView,
     getStatus,
     registerView,
     loginView,

@@ -10,10 +10,9 @@ const auth = require('./config/auth.js');
 const flash = require('flash');
 
 const app = express();
+const port = 3000;
 
 auth(passport);
-
-const port = 3000;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

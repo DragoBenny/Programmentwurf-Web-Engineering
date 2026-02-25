@@ -30,4 +30,4 @@ document.getElementById("comment-button").addEventListener("click", async functi
 
 checkStatus();
 console.log(info);
-console.log(info.split('/').filter(Boolean).pop());
+console.log("Trail-ID", info.split('/').filter(Boolean).pop());

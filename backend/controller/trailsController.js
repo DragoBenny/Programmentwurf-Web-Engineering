@@ -25,15 +25,14 @@ const trailView = async (req, res) => {
     const images = await imagesModel.getByTrailId(trailId);
     const comments = await commentsModel.getByTrailId(trailId);
 
-    console.log(comments);
     res.render('../views/trail-view', {trail: trail, images: images, comments: comments});
 }
 
 const createComment = async(req, res) => {
     const {content, trail_id }= req.body;
-    const author = (await usersModel.getByAttribute('id', req.user.id))[0].username;
+    const user_id = req.user.id;
  
-    await commentsModel.save({author, content, trail_id});
+    await commentsModel.save({content, trail_id, user_id});
 }
 
 module.exports = {
