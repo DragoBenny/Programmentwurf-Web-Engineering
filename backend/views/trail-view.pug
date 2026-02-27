@@ -23,12 +23,18 @@ block content
         form(id="comment-form") 
             input(id='comment-content' type='text' required)
             input(id='comment-button' type='submit' value='Senden')
+        //display comments in this section via for-loop
         div(id='comments')
-            each comment in comments
-                +commentItem(comment)
+            if comments.length > 0
+                table
+                    tbody
+                        each comment in comments
+                            +commentItem(comment)
+
 
 block scripts
     script(src='/scripts/sendComment.js')
+    //load the leaflet and leaflet-gpx libraries to render the interactive map
     script(type='importmap').
         {
             "imports": {
@@ -36,4 +42,5 @@ block scripts
                 "leaflet-gpx": "/scripts/gpx.js"
             }
         }
+    //script to render the map
     +mapScript(trail)

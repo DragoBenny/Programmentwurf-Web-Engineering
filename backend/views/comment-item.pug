@@ -1,5 +1,7 @@
 mixin commentItem(comment)
-    tr
+    tr(class="comment-meta")
         td #{comment.username}
         td #{comment.day_date}
-        td #{comment.content}
+    tr(class="comment-content")
+        td 
+            p #{comment.content}

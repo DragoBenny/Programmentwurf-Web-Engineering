@@ -236,20 +236,26 @@ main {
   padding: 1.5rem;
 }
 
-#comments td {
-  padding: 0.75rem;
+.comment-meta {
+  display: flex;
+  justify-content: space-between;
+}
+
+.comment-meta td{
   color: var(--green4);
 }
 
-#comments td:first-child {
-  font-weight: 600;
-  color: var(--green3);
-}
-
-#comments td:nth-child(2) {
+.comment-content td p{
   font-size: 0.9rem;
   color: #666;
+  border-bottom: 2px solid #AAA;
+  padding: 3px;
+  margin-bottom: 5px;
+  display: inline-block; 
+  text-align: left; 
+  max-width: 40ex;
 }
+
 
 /* Footer */
 footer {

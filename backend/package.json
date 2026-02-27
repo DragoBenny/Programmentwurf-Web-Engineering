@@ -16,6 +16,6 @@
   "scripts": {
     "start": "node --env-file='.env' app.js",
     "start:dev": "node --watch --env-file=.env app.js",
-    "reset": "docker compose down && docker compose up"
+    "reset": "sudo docker compose down -v && sudo docker compose build && sudo docker compose up"
   }
 }

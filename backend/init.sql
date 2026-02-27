@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS comments (
     user_id INTEGER,
         CONSTRAINT fk_users FOREIGN KEY(user_id) REFERENCES users(id),
     post_date DATE DEFAULT CURRENT_DATE,
-    content VARCHAR(255) DEFAULT NULL
+    content text DEFAULT NULL
 );
 
 CREATE TABLE IF NOT EXISTS reviews (

@@ -52,7 +52,7 @@ body {
 }
 
 /* === Header === */
-.header {
+header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -83,7 +83,7 @@ body {
   transition: 0.3s;
 }
 
-.nav {
+nav {
   display: flex;
   gap: 2.5rem;
 }
@@ -343,7 +343,7 @@ main{
 }
 
 /* === Footer === */
-.footer{
+footer{
   padding: 2.5rem 3rem;
   background-color: var(--green4);
   color: var(--white);
@@ -371,7 +371,7 @@ main{
     flex: 0 0 calc(33.333% - 1rem);
   }
   
-  .header {
+  header {
     padding: 1.25rem 2rem;
   }
   
@@ -382,7 +382,7 @@ main{
 }
 
 @media (max-width: 768px) {
-  .header {
+  header {
     flex-wrap: wrap;
     gap: 1rem;
     padding: 1rem 1.5rem;

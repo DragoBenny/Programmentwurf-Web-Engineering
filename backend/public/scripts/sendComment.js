@@ -20,12 +20,12 @@ document.getElementById("comment-button").addEventListener("click", async functi
         content: document.getElementById('comment-content').value,
         trail_id: parseInt(urlData.split('/').filter(Boolean).pop())
     }
+    document.getElementById('comment-content').value = '';
     const response = await fetch('/trails/comment', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(data)
     });
-    document.getElementById('comment-content').value = "";
 });
 
 checkStatus();
