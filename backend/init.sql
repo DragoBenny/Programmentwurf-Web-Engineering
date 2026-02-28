@@ -3,7 +3,6 @@ CREATE TABLE IF NOT EXISTS users (
     username VARCHAR(255) DEFAULT NULL,
     email VARCHAR(255) DEFAULT NULL,
     pass VARCHAR(255) DEFAULT NULL,
-    active bool DEFAULT true
 );
 
 CREATE TABLE IF NOT EXISTS trails (
@@ -13,7 +12,8 @@ CREATE TABLE IF NOT EXISTS trails (
     zoom INTEGER DEFAULT NULL,
     gpx VARCHAR(255) DEFAULT NULL,
     info JSON DEFAULT NULL,
-    description TEXT DEFAULT NULL
+    description TEXT DEFAULT NULL,
+    is_popular BOOLEAN DEFAULT false
 );
 
 CREATE TABLE IF NOT EXISTS images (
@@ -64,3 +64,4 @@ INSERT INTO images (trail_id, source) VALUES
     1,
     'cat2.jpg'
 );
+

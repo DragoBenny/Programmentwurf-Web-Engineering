@@ -23,11 +23,19 @@ const getStatus = async (req, res) => {
 }
 
 const registerView = (req, res) => {
-    res.render('../views/register.pug');
+    if(req.isAuthenticated()){
+        res.redirect('/profile');
+    }else{
+        res.render('../views/register.pug');
+    }
 }
 
 const loginView = (req, res) => {
-    res.render('../views/login.pug');
+    if(req.isAuthenticated()){
+        res.redirect('/profile');
+    }else{
+        res.render('../views/login.pug');
+    }
 }
 
 const registerUser = async (req, res) => {

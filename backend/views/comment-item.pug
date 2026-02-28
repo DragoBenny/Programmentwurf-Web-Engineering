@@ -1,6 +1,9 @@
-mixin commentItem(comment)
+mixin commentItem(comment, showName)
     tr(class="comment-meta")
-        td #{comment.username}
+        if showName == true
+            td #{comment.username}
+        else
+            td #{comment.trail_name}
         td #{comment.day_date}
     tr(class="comment-content")
         td 

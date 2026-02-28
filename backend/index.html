@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>WanderWeg</title>
   <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/home.css">
 </head>
 
 <body>
@@ -32,29 +33,21 @@
   <main>
     <!-- Hero Section -->
     <section class="hero">
-      <div class="hero-image-container">
-        <img id="hero-image" src="/images/hero-img-test.jpeg">
+      <div id="hero-image" class="hero-image">
+        <img id="picture-hero-image" src="/images/homepage-wanderweg-hero-shot.png">
+        <div id="logo-and-subtitle">
+          <img id="logo-on-hero-image" src="/images/Wander-weg-logo.svg">
+          <p id="text-on-hero-image">Dein Routenplaner für die schönsten Ausflüge</p>  <!-- Muss noch versuchen, die Subtitle nach oben zu schieben -->
+        </div>
       </div>
-    </section>
-
-    <section class="info-section">
-      <h2>WanderWeg - Deine nächste Tour beginnt hier</h2>
-      <p>Mit WanderWeg entdeckst du die schönsten Wanderrouten auf einen Blick – übersichtlich, inspirierend und interaktiv.
-        Egal ob gemütlicher Spaziergang, aussichtsreiche Panoramastrecke oder anspruchsvolle Bergtour:
-          Auf WanderWeg findest du garantiert die passende Route für dein nächstes Abenteuer.
-      </p>
-      <p>
-        Wählen Sie ganz einfach eine von unseren beliebtesten Routen aus 
-        oder durchstöbern Sie eine Auflistung an anderen Routen
-        - bei WanderWeg ist für jeden was dabei.
-      </p>
     </section>
 
     <!-- Beliebte Routen (Slideshow) -->
     <section class="routes-section">
       <h2 class="section-title">Beliebte Routen</h2>
       <div class="routes-slider-container">
-        <div class="routes-slider" id="routesSlider"> </div>                                                                                                                                               
+        <div class="routes-slider" id="routesSlider">
+        </div>
       </div>
 
       <div class="slider-controls">
@@ -67,17 +60,31 @@
     <!-- Rezensionen Section -->
     <section class="reviews-section">
       <div class="reviews-container">
-        <div class="reviews-list"></div>
+        <div class="reviews-list">
+        </div>
       </div>
     </section>
-  </main>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="footer-content">
-      <span>Footer</span>
-    </div>
-  </footer>
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        <span id="footer-element1">
+          Web Engineering Project<br>
+          1. Semester<br>
+          TIA25<br>
+          DHBW Ravensburg<br>
+          Campus Friedrichshafen<br>
+        </span>
+        <span id="footer-element2">
+          Web Developers:<br>
+          &nbsp;Benjamin Hager<br>
+          &nbsp;Pen Pingel<br>
+          &nbsp;Anna Wiehe<br>
+          &nbsp;Jari Zeschmann<br>
+        </span>
+      </div>
+    </footer>
+
 
   <script src="/scripts/createPopularTrails.js"></script>
   <script src="/scripts/renderReviews.js"></script>

@@ -22,5 +22,16 @@ class Model{
             console.error('Error fetching trails by id', error);
         }
     }
+
+    async getPopular(){
+        try{
+            const result = await pool.query(
+                'SELECT * FROM trails WHERE popular = true',
+            );
+            return result.rows;
+        }catch(error){
+            console.error('Error fetching popular trails', error);
+        }
+    }
 }
 module.exports = new Model();

@@ -1,7 +1,7 @@
  const createPopular = async() => {   
     const container = document.getElementById('routesSlider');
 
-    const response = await fetch('/trails/data');
+    const response = await fetch('/trails/popular');
     if(response.ok){
         const data = await response.json();
         const trails = data.trails;

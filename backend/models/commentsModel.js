@@ -17,7 +17,7 @@ class Model{
     async getByUserId(value) {
         try{
             const result = await pool.query(
-                "SELECT comments.id, comments.content, TO_CHAR(comments.post_date, 'YYYY-MM-DD') as day_date, users.username FROM comments JOIN users ON comments.user_id = users.id WHERE user_id = $1",
+                "SELECT comments.id, comments.content, TO_CHAR(comments.post_date, 'YYYY-MM-DD') as day_date, users.username, trails.name as trail_name FROM comments JOIN users ON comments.user_id = users.id JOIN trails ON comments.trail_id = trails.id WHERE user_id = $1",
                 [value]
             );
             return result.rows;

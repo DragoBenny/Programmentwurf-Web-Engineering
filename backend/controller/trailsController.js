@@ -1,14 +1,6 @@
-const usersModel = require('../models/usersModel');
 const trailsModel = require('../models/trailsModel');
 const imagesModel = require('../models/imagesModel');
 const commentsModel = require('../models/commentsModel');
-
-const getTrails = async (req, res) => {
-    const trails = await trailsModel.getAll();
-    const images = await imagesModel.getAll();
-
-    res.send({trails: trails, images: images});
-}
 
 const trailListView = async (req, res) => {
 
@@ -16,6 +8,13 @@ const trailListView = async (req, res) => {
     const images = await imagesModel.getAll();
 
     res.render('../views/trail-list', {trails: trails, images: images});
+}
+
+const getPopularTrails = async (req, res) => {
+    const trails = await trailsModel.getPopular();
+    const images = await imagesModel.getAll();
+
+    res.send({trails: trails, images: images});
 }
 
 const trailView = async (req, res) => {
@@ -36,7 +35,7 @@ const createComment = async(req, res) => {
 }
 
 module.exports = {
-    getTrails,
+    getPopularTrails,
     trailListView, 
     trailView,
     createComment
