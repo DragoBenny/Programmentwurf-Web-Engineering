@@ -3,7 +3,6 @@ CREATE TABLE IF NOT EXISTS users (
     username VARCHAR(255) DEFAULT NULL,
     email VARCHAR(255) DEFAULT NULL,
     pass VARCHAR(255) DEFAULT NULL,
-    active bool DEFAULT true
 );
 
 CREATE TABLE IF NOT EXISTS trails (
@@ -13,7 +12,8 @@ CREATE TABLE IF NOT EXISTS trails (
     zoom INTEGER DEFAULT NULL,
     gpx VARCHAR(255) DEFAULT NULL,
     info JSON DEFAULT NULL,
-    description TEXT DEFAULT NULL
+    description TEXT DEFAULT NULL,
+    is_popular BOOLEAN DEFAULT false
 );
 
 CREATE TABLE IF NOT EXISTS images (
@@ -27,9 +27,10 @@ CREATE TABLE IF NOT EXISTS comments (
     id SERIAL PRIMARY KEY,
     trail_id INTEGER,
         CONSTRAINT fk_trails FOREIGN KEY(trail_id) REFERENCES trails(id),
-    author VARCHAR(255) DEFAULT NULL,
-    date TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
-    content VARCHAR(255) DEFAULT NULL
+    user_id INTEGER,
+        CONSTRAINT fk_users FOREIGN KEY(user_id) REFERENCES users(id),
+    post_date DATE DEFAULT CURRENT_DATE,
+    content text DEFAULT NULL
 );
 
 CREATE TABLE IF NOT EXISTS reviews (
@@ -63,3 +64,4 @@ INSERT INTO images (trail_id, source) VALUES
     1,
     'cat2.jpg'
 );
+

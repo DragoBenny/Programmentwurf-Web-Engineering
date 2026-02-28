@@ -12,10 +12,21 @@ services:
     ports:
       - "5432:5432"
     networks:
-      - db
+      - hiking-network
     restart: unless-stopped
+  app:
+    build: . 
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_URL: postgres://postgres:postgres@db:5432/hiking-db
+    depends_on:
+      - db
+    networks:
+      - hiking-network
+
 networks:
-  db:
+  hiking-network:
     driver: bridge
 
 volumes:

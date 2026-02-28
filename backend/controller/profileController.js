@@ -1,13 +1,41 @@
-const model = require('../models/usersModel');
+const usersModel = require('../models/usersModel');
+const commentsModel = require('../models/commentsModel');
 const bcrypt = require('bcrypt'); //required to hash user passwords
 const passport = require('passport');
 
+const profileView = async (req, res) => {
+    if(req.isAuthenticated()){
+        const user = (await usersModel.getByAttribute('id', req.user.id))[0];
+        const comments = await commentsModel.getByUserId(req.user.id);
+        res.render('../views/profile.pug', {user: user, comments: comments});
+    }else{
+        res.redirect('/profile/login');
+    }
+}
+
+const getStatus = async (req, res) => {
+    if(req.isAuthenticated()){
+        const username = (await usersModel.getByAttribute('id', req.user.id))[0].username;
+        res.send({loggedIn: true, username: username});
+    }else{
+        res.send({loggedIn: false, username: 'Anmelden'});
+    }
+}
+
 const registerView = (req, res) => {
-    res.render('../views/register.pug');
+    if(req.isAuthenticated()){
+        res.redirect('/profile');
+    }else{
+        res.render('../views/register.pug');
+    }
 }
 
 const loginView = (req, res) => {
-    res.render('../views/login.pug');
+    if(req.isAuthenticated()){
+        res.redirect('/profile');
+    }else{
+        res.render('../views/login.pug');
+    }
 }
 
 const registerUser = async (req, res) => {
@@ -15,28 +43,28 @@ const registerUser = async (req, res) => {
 
     //check if all fields are filled in
     if(!username || !email || !password || !confirmedPassword){ 
-        return res.render('../views/register.pug', {message: 'Please fill in all the fields'});
+        return res.render('../views/register.pug', {message: 'Bitte alle Felder ausfüllen'});
     }
 
     //check if email is already in use
-    if((await model.getByAttribute('email', email)).length > 0){ 
-        return res.render('../views/register.pug', {message: 'Email is already exists'});
+    if((await usersModel.getByAttribute('email', email)).length > 0){ 
+        return res.render('../views/register.pug', {message: 'E-Mail existiert bereits'});
     } 
 
     
     //check if username is already in use
-    if((await model.getByAttribute('username', username)).length > 0){ 
-        return res.render('../views/register.pug', {message: 'Username already exists'});
+    if((await usersModel.getByAttribute('username', username)).length > 0){ 
+        return res.render('../views/register.pug', {message: 'Username existiert bereits'});
     } 
 
     //check if password is valid -> number of symbols, lower and upper case, etc.
     if(!(password.length >= 8)){
-        return res.render('../views/register.pug', {message: 'Password must be atleast 8 characters long'});
+        return res.render('../views/register.pug', {message: 'Passwort muss mindestens 8 Zeichen lang sein'});
     }
 
     //check if confirmed password matches password
     if(password != confirmedPassword){
-        return res.render('../views/register.pug', {message: 'Confirmed password has to match the password'});
+        return res.render('../views/register.pug', {message: 'Das bestätigte Passwort muss dem Passwort entsprechen'});
     }
 
     //hash password
@@ -47,7 +75,7 @@ const registerUser = async (req, res) => {
             let hashedPassword = hash;
             
             //create new user in database
-            model.save({username, email, hashedPassword});
+            usersModel.save({username, email, hashedPassword});
 
             //redirect user to start page
             return res.render('../views/login.pug');
@@ -65,12 +93,11 @@ const logoutUser = async(req, res, next) => {
 }
 
 const loginUser = async (req, res, next) => {
-    console.log(req.body);
     const {emailUsername, password} = await req.body;
 
     //check if fields are filled in
     if(!emailUsername || !password){
-        return res.render('../views/login.pug', {message: 'Please fill in the fields'});
+        return res.render('../views/login.pug', {message: 'Bitte alle Felder ausfüllen'});
     }
 
     passport.authenticate('local', (err, user, info) => {
@@ -89,10 +116,12 @@ const loginUser = async (req, res, next) => {
             }
             return res.redirect('/');
         });
-    })(req, res, next); // <--- IMPORTANT: This executes the middleware
+    })(req, res, next); 
 }
 
 module.exports = {
+    profileView,
+    getStatus,
     registerView,
     loginView,
     logoutUser,

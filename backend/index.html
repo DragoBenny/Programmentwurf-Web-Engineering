@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WanderWege</title>
+  <title>WanderWeg</title>
   <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/home.css">
 </head>
 
 <body>
@@ -24,95 +25,70 @@
 
     <div class="account">
       <span>
-        <a href="/profile">Account</a>
+        <a id="status" href="/profile">Account</a>
       </span>
-      <div class="account-avatar"></div>
     </div>
   </header>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-image">
-      <img src="/images/hero-img-test.jpeg">
-    </div>
-  </section>
-
-  <!-- Beliebte Routen (Slideshow) -->
-  <section class="routes-section">
-    <h2 class="section-title">Beliebte Routen</h2>
-    <div class="routes-slider-container">
-      <div class="routes-slider" id="routesSlider">
-        <article class="route-card">
-          <div class="route-image">
-            <img class="route-1-image" src="/images/route_1.jpg">
-            <span class="placeholder-text">Preview Image</span>
-          </div>
-          <h3 class="route-title">Route 1</h3>
-        </article>
-        <article class="route-card">
-          <div class="route-image">
-            <span class="placeholder-text">Preview Image</span>
-          </div>
-          <h3 class="route-title">Route 2</h3>
-        </article>
-        <article class="route-card">
-          <div class="route-image">
-            <span class="placeholder-text">Preview Image</span>
-          </div>
-          <h3 class="route-title">Route 3</h3>
-        </article>
-        <article class="route-card">
-          <div class="route-image">
-            <span class="placeholder-text">Preview Image</span>
-          </div>
-          <h3 class="route-title">Route 4</h3>
-        </article>
-        <article class="route-card">
-          <div class="route-image">
-            <span class="placeholder-text">Preview Image</span>
-          </div>
-          <h3 class="route-title">Route 5</h3>
-        </article>
-        <article class="route-card">
-          <div class="route-image">
-            <span class="placeholder-text">Preview Image</span>
-          </div>
-          <h3 class="route-title">Route 6</h3>
-        </article>
-      </div>
-    </div>
-
-    <div class="slider-controls">
-      <button class="slider-btn" id="prevBtn">←</button>
-      <button class="slider-btn" id="nextBtn">→</button>
-    </div>
-    <div class="slider-dots" id="sliderDots"></div>
-  </section>
-
-  <!-- Rezensionen Section -->
-  <section class="reviews-section">
-    <div class="reviews-container">
-      <div class="reviews-list">
-        <div class="review-card">
-          <span class="placeholder-text">Rezension 1</span>
-        </div>
-        <div class="review-card">
-          <span class="placeholder-text">Rezension 2</span>
-        </div>
-        <div class="review-card">
-          <span class="placeholder-text">Rezension 3</span>
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div id="hero-image" class="hero-image">
+        <img id="picture-hero-image" src="/images/homepage-wanderweg-hero-shot.png">
+        <div id="logo-and-subtitle">
+          <img id="logo-on-hero-image" src="/images/Wander-weg-logo.svg">
+          <p id="text-on-hero-image">Dein Routenplaner für die schönsten Ausflüge</p>  <!-- Muss noch versuchen, die Subtitle nach oben zu schieben -->
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="footer-content">
-      <span>Footer</span>
-    </div>
-  </footer>
+    <!-- Beliebte Routen (Slideshow) -->
+    <section class="routes-section">
+      <h2 class="section-title">Beliebte Routen</h2>
+      <div class="routes-slider-container">
+        <div class="routes-slider" id="routesSlider">
+        </div>
+      </div>
 
+      <div class="slider-controls">
+        <button class="slider-btn" id="prevBtn">←</button>
+        <button class="slider-btn" id="nextBtn">→</button>
+      </div>
+      <div class="slider-dots" id="sliderDots"></div>
+    </section>
+
+    <!-- Rezensionen Section -->
+    <section class="reviews-section">
+      <div class="reviews-container">
+        <div class="reviews-list">
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        <span id="footer-element1">
+          Web Engineering Project<br>
+          1. Semester<br>
+          TIA25<br>
+          DHBW Ravensburg<br>
+          Campus Friedrichshafen<br>
+        </span>
+        <span id="footer-element2">
+          Web Developers:<br>
+          &nbsp;Benjamin Hager<br>
+          &nbsp;Pen Pingel<br>
+          &nbsp;Anna Wiehe<br>
+          &nbsp;Jari Zeschmann<br>
+        </span>
+      </div>
+    </footer>
+
+
+  <script src="/scripts/createPopularTrails.js"></script>
+  <script src="/scripts/renderReviews.js"></script>
   <script src="slider.js"></script>
+  <script src="/scripts/handleSession.js"></script>
 </body>
 </html>

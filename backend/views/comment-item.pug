@@ -1,5 +1,10 @@
-mixin commentItem(comment)
-    tr
-        td #{comment.writer}
-        td #{comment.date}
-        td #{comment.content}
+mixin commentItem(comment, showName)
+    tr(class="comment-meta")
+        if showName == true
+            td #{comment.username}
+        else
+            td #{comment.trail_name}
+        td #{comment.day_date}
+    tr(class="comment-content")
+        td 
+            p #{comment.content}

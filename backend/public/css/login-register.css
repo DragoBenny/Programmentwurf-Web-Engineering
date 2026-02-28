@@ -1,0 +1,76 @@
+body {
+    background-image: url("/images/login-register-background.jpg");
+    background-repeat: no-repeat;
+    background-size: auto 200vh;
+    background-position: center;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--green4);
+    line-height: 1.6;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+form {
+    border: none;
+    display: flex;
+    flex-direction: column;
+    padding: 5rem;
+    border-radius: var(--border-radius);
+    background-color: var(--white);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    width: 14rem;
+}
+
+.form-element {
+    margin: 0.5rem; 
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    border: solid;
+}
+
+#label-login, #label-register {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+#username-field, #password-field, #email-field, #confirmed-password-field {
+    border-color: var(--green3)
+}
+
+#register-button, #login-button {
+    background-color: var(--green4);
+    color: var(--white);
+    border-color: var(--green4);
+    border-radius: var(--border-radius);
+    border-width: 0.25rem;
+    transition: 0.25s ease;
+    font-size: 1rem;
+}
+
+#register-button:hover, #login-button:hover {
+    transition: 0.25s ease;
+    border-color: var(--orange1);
+    transform: translateY(-3px);
+}
+
+#register-button:active, #login-button:active {
+    background-color: var(--orange1);
+}
+
+#message-field {
+    border: none;
+    color: var(--orange1);
+    font-weight: 600;
+}
+
+@media (max-height: 500px) {
+
+    body {
+        background-size: auto 1000px;
+    }
+
+}

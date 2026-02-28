@@ -1,23 +1,30 @@
+//This is the main template that includes the head information and the header.
+//All other content will be loaded into the block sections
 doctype html 
 html(lang="de")
     head 
         meta(charset="UTF-8")
         link(rel='stylesheet' href='https://unpkg.com/leaflet@1.9.4/dist/leaflet.css')
         link(rel='stylesheet' href='/css/style.css')
-        title #{title} 
-        style.
-            #map { height: 500px; width: 100%; }
+        title Wanderweg
+    
+        block head 
+            
     body 
-        header(class='header')
-            div(class="logo")
-                a(href="/" class="nav-link") WanderWege
-            nav(class="nav")
-                a(href="/trails" class="nav-link") Routen
-            div(class="account")
+        header
+            a(class='logo' href='/')
+                img(
+                    class='logo-img'
+                    src='/images/Wander-weg-logo.svg'
+                    alt='WanderWege Logo'
+                )
+            nav
+                a(class='nav-link' href='/trails') Routen
+            .account
                 span
-                    a(href="/profile" class="nav-link") Account
-                div(class="account-avatar")
+                    a(id='status' href='/profile') Account
         main
             block content 
-        footer 
+
+        script(src='/scripts/handleSession.js')
         block scripts

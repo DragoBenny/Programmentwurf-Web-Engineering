@@ -8,7 +8,13 @@ const trailListView = async (req, res) => {
     const images = await imagesModel.getAll();
 
     res.render('../views/trail-list', {trails: trails, images: images});
-    
+}
+
+const getPopularTrails = async (req, res) => {
+    const trails = await trailsModel.getPopular();
+    const images = await imagesModel.getAll();
+
+    res.send({trails: trails, images: images});
 }
 
 const trailView = async (req, res) => {
@@ -22,11 +28,15 @@ const trailView = async (req, res) => {
 }
 
 const createComment = async(req, res) => {
-
+    const {content, trail_id }= req.body;
+    const user_id = req.user.id;
+ 
+    await commentsModel.save({content, trail_id, user_id});
 }
 
-
 module.exports = {
+    getPopularTrails,
     trailListView, 
-    trailView
+    trailView,
+    createComment
 };

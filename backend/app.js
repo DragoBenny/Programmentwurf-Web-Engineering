@@ -6,7 +6,6 @@ const bcrypt = require('bcrypt');
 const passport = require('passport');
 const expressSession = require('express-session');
 const auth = require('./config/auth.js');
-const flash = require('flash');
 
 const app = express();
 
@@ -28,7 +27,6 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(flash());
 
 app.listen(port, () => {
   console.log(`App is listening on port ${port}`)

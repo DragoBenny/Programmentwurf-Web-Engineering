@@ -1,0 +1,17 @@
+extends ./frame
+include ./comment-item
+
+block head
+    link(rel='stylesheet' href='/css/profile.css')
+
+block content
+    section(class='profile-section')
+        h1 Hallo, #{user.username}
+        a(href='/profile/logout') Klicken Sie hier, um sich abzumelden
+    div(id='comments')
+        h2(id='comments-title') Ihre verfassten Kommentare:
+            if comments.length > 0
+                table
+                    tbody
+                        each comment in comments
+                            +commentItem(comment, false)

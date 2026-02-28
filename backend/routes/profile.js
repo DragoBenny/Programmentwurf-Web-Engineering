@@ -3,6 +3,8 @@ const router = express.Router();
 const passport = require('passport');
 
 const {
+  profileView,
+  getStatus,
   registerView,
   loginView,
   logoutUser, 
@@ -10,14 +12,8 @@ const {
   loginUser
 } = require('../controller/profileController');
 
-router.get('/', (req, res) => { //testing purposes
-  if(req.isAuthenticated()){
-    res.send('Welcome to your profile!')
-  }else{
-    res.redirect('/profile/login');
-  }
-});
-
+router.get('/', profileView);
+router.get('/status', getStatus);
 router.get('/register', registerView);
 router.get('/login', loginView);
 router.get('/logout', logoutUser); //end the session of the user

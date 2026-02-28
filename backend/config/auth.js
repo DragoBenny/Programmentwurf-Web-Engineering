@@ -15,13 +15,13 @@ function initialize(passport){
 
             if(byEmail) user = byEmail;
             else if(byUsername) user = byUsername;
-            else return done(null, false, {message: 'Email oder Username incorrect'});
+            else return done(null, false, {message: 'Email oder Username falsch'});
 
             const isMatch = await bcrypt.compare(password, user.pass);
             if (isMatch) {
                 return done(null, user);
             } else {
-                return done(null, false, { message: 'Password incorrect' });
+                return done(null, false, { message: 'Password falsch' });
             }
 
         }catch(err){
