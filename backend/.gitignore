@@ -1,2 +1,0 @@
-#ignore node modules due to their large file size
-node_modules

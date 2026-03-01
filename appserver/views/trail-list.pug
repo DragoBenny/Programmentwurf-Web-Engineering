@@ -1,0 +1,13 @@
+extends ./frame
+include ./trail-item
+
+block head 
+    link(rel='stylesheet' href='/css/list.css')
+
+block content
+    table(id='trails')
+        tbody
+            each trail in trails
+                +trailItem(trail)
+
+    
