@@ -1,0 +1,11 @@
+mixin trailItem(trail)
+    tr(class='trail-item')
+        td
+            div(class='image-container')
+                img(src=`/images/scenery/${trail.image_source}`)
+
+
+        td(class='trail-content')
+            h2 
+                a(href=`/trails/${trail.id}`) #{trail.name}
+            p #{trail.description}
